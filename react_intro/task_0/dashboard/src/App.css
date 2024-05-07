@@ -33,6 +33,7 @@ div {
 }
 
 .App-footer {
+  font-style: italic;
   position: absolute;
   bottom: 0;
   width: 100%;
