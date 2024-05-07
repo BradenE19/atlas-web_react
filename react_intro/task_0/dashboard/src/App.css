@@ -1,46 +1,29 @@
 :root {
-  --holberton-red: #e1484c;
-}
-
-body {
-  max-width: 90%;
-  margin: 0 auto;
-}
-
-div {
-  padding: 2px 8px;
-}
-
-.App {
-  position: relative;
-  min-height: 100vh;
+  --main-color: #e01d3f;
 }
 
 .App-header {
   display: flex;
-  flex-direction: row;
-  justify-content: left;
-  border-bottom: 3px solid var(--holberton-red);
+  align-items: center;
+  color: var(--main-color);
+  font-size: 20px;
+  border-bottom: 3px solid var(--main-color);
 }
 
-.App-header h1 {
-  margin: auto auto auto 0;
-  color: var(--holberton-red);
+.App-header img {
+  width: 200px;
 }
 
-.App-body p {
-  margin: 48px 0 0 32px;
+.App-body {
+  margin: 50px;
 }
 
 .App-footer {
-  font-style: italic;
-  position: absolute;
-  bottom: 0;
+  border-top: 3px solid var(--main-color);
   width: 100%;
-}
-
-.App-footer p {
-  text-align: center;
-  border-top: 3px solid var(--holberton-red);
-  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  font-style: italic;
 }
