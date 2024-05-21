@@ -12,7 +12,10 @@ class Notifications extends Component {
 	};
 
 	shouldComponentUpdate(nextProps) {
-		if (this.props.listNotifications.length < nextProps.listNotifications.length) {
+		if (
+			this.props.listNotifications.length < nextProps.listNotifications.length ||
+			this.props.displayDrawer !== nextProps.displayDrawer
+		) {
 			return true;
 		}
 		return false;
@@ -26,11 +29,16 @@ class Notifications extends Component {
 		let {
 			displayDrawer,
 			listNotifications,
+			handleDisplayDrawer,
+			handleHideDrawer
 		} = this.props;
 
 		return (
 			<div className="NotificationsComponent">
-				<div className={css(styles.menuItem)}>
+				<div
+					className={`menuItem ${css(styles.menuItem)}`}
+					onClick={() => handleDisplayDrawer()}
+				>
 					Your notifications
 				</div>
 				{
@@ -51,7 +59,8 @@ class Notifications extends Component {
 							}}
 							aria-label="Close"
 							onClick={(e) => {
-								console.log('Close button has been clicked');
+								// console.log('Close button has been clicked');
+								handleHideDrawer()
 							}}
 						>
 							<img
@@ -93,9 +102,6 @@ class Notifications extends Component {
 		);
 	};
 };
-
-// Create one object containing the CSS frames to make the opacity change from 0.5 to 1
-// bounce. You can play with translateY and alternate from 0px to -5px and 5px
 
 const opacityFrame = {
 	'0%': {
@@ -164,11 +170,15 @@ const styles = StyleSheet.create({
 Notifications.propTypes = {
 	displayDrawer: PropTypes.bool,
 	listNotifications: PropTypes.arrayOf(NotificationItemShape),
+	displayDrawer: PropTypes.bool,
+	handleDisplayDrawer: PropTypes.func,
+	handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
 	displayDrawer: false,
 	listNotifications: [],
+	displayDrawer: false,
 };
 
 export default Notifications;

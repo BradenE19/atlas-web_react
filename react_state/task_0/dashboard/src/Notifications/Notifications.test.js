@@ -165,4 +165,40 @@ describe("Testing the <Notifications /> wrapperTwo", () => {
 		// expect(notifSpy).to.have.been.calledTwice();
 	});
 
+	it("Verify that clicking on the menu item calls handleDisplayDrawer", () => {
+		const mockDisplay = jest.fn(() => {});
+		const mockHide = jest.fn(() => {});
+
+		let props = {
+			...props2,
+			displayDrawer: false,
+			handleDisplayDrawer: mockDisplay,
+			handleHideDrawer: mockHide,
+		};
+
+		let wrapper = shallow(<Notifications {...props} />);
+
+		wrapper.find('.menuItem').at(0).simulate('click');
+
+		expect(mockDisplay.mock.calls.length).to.equal(1);
+	});
+
+	it("Verify that clicking on the button calls handleHideDrawer", () => {
+		const mockDisplay = jest.fn(() => {});
+		const mockHide = jest.fn(() => {});
+
+		let props = {
+			...props2,
+			displayDrawer: true,
+			handleDisplayDrawer: mockDisplay,
+			handleHideDrawer: mockHide,
+		};
+
+		let wrapper = shallow(<Notifications {...props} />);
+
+		wrapper.find('button').at(0).simulate('click');
+
+		expect(mockHide.mock.calls.length).to.equal(1);
+	});
+
 });

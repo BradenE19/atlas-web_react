@@ -14,8 +14,25 @@ import { StyleSheet, css } from 'aphrodite';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      displayDrawer: false,
+    };
     this.ctrlHEventHandler = this.ctrlHEventHandler.bind(this);
-  }
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  };
+
+  handleDisplayDrawer() {
+    this.setState({
+      displayDrawer: true,
+    });
+  };
+
+  handleHideDrawer() {
+    this.setState({
+      displayDrawer: false,
+    });
+  };
 
   ctrlHEventHandler(e) {
     let k = e.key;
@@ -43,6 +60,10 @@ class App extends Component {
     let {
       isLoggedIn,
     } = this.props;
+
+    let {
+      displayDrawer
+    } = this.state;
 
     let i = 0;
     
@@ -86,7 +107,12 @@ class App extends Component {
       <Fragment>
         <div className={css(styles.app)}>
           <div className={css(styles.upperside)}>
-            <Notifications listNotifications={listNotifications} />
+            <Notifications
+              listNotifications={listNotifications}
+              displayDrawer={displayDrawer}
+              handleDisplayDrawer={this.handleDisplayDrawer}
+              handleHideDrawer={this.handleHideDrawer}
+            />
             <Header />
           </div>
           {
@@ -103,8 +129,10 @@ class App extends Component {
           }
           <BodySection title="News from the school">
             <p>
-              Ipsum anim sunt qui ullamco do consequat reprehenderit
-              aliqua fugiat proident amet duis.
+              Labore ut consequat esse nostrud aute exercitation occaecat consequat ad cillum enim et est ex.
+               Qui proident veniam in aute magna occaecat.
+               Esse duis proident aliqua proident eu magna aliqua est exercitation.
+               Cupidatat ex eiusmod et commodo laborum veniam deserunt ad est excepteur cillum laborum.
             </p>
           </BodySection>
           <Footer />

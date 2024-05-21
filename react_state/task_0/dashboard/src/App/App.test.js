@@ -74,3 +74,28 @@ describe('logOut alerts with correct string', () => {
 	jest.restoreAllMocks();
 
 });
+
+describe("Verify <App /> on state change", () => {
+	let wrapper;
+
+	beforeEach(() => {
+		wrapper = shallow(<App />);
+		StyleSheetTestUtils.suppressStyleInjection();
+	});
+
+	afterEach(() => {
+		StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+	});
+
+	it("verify that the default state for displayDrawer is false & after calling handleDisplayDrawer, the state.displayDrawer should now be true", () => {
+		expect(wrapper.state('displayDrawer')).to.equal(false);
+		wrapper.instance().handleDisplayDrawer();
+		expect(wrapper.state('displayDrawer')).to.equal(true);
+	});
+
+	it("verify that after calling handleHideDrawer, the state.displayDrawer is updated to be false", () => {
+		wrapper.instance().handleHideDrawer();
+		expect(wrapper.state('displayDrawer')).to.equal(false);
+	});
+
+});
