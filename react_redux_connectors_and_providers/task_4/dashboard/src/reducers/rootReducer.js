@@ -1,19 +1,21 @@
-import { reducerCourse, initialState as initialStateCourse } from "./courseReducer";
-import { notificationReducer, initialState as initialStateNotification } from "./notificationReducer";
-import uiReducer, { initialState as initialStateUiReducer } from "./uiReducer";
+import courseReducer, { initialCourseState } from "./courseReducer";
+import notificationReducer, {
+  initialNotificationState,
+} from "./notificationReducer";
+import uiReducer, { initialUiState } from "./uiReducer";
 
 import { Map } from "immutable";
 
-const rootReducer = {
-  courses: reducerCourse,
-  notifications: notificationReducer,
-  ui: uiReducer
+export const initialState = {
+  courses: Map(initialCourseState),
+  notifications: Map(initialNotificationState),
+  ui: Map(initialUiState),
 };
 
-export const initialState = {
-  courses: Map(initialStateCourse),
-  notifications: Map(initialStateNotification),
-  ui: Map(initialStateUiReducer)
+const rootReducer = {
+  courses: courseReducer,
+  notifications: notificationReducer,
+  ui: uiReducer,
 };
 
 export default rootReducer;
