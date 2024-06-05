@@ -12,7 +12,7 @@ import CourseList from "../CourseList/CourseList";
 StyleSheetTestUtils.suppressStyleInjection();
 
 const loggedUser = {
-  email: "diahancaroll@hotmail.com",
+  email: "johann.salva@holberton.nz",
   password: "12345",
   isLoggedIn: true,
 };
